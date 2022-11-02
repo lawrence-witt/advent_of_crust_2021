@@ -5,7 +5,7 @@ fn str_to_i32(value: &str) -> i32 {
 }
 
 fn main() {
-    let input = common::read_rn_input(2);
+    let input = common::read_rn_input(1);
 
     let mut count = 0;
 
