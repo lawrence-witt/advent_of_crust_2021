@@ -6,9 +6,7 @@ fn str_to_i32(value: &str) -> i32 {
 
 fn main() {
     let input = common::read_rn_input(1);
-
     let mut count = 0;
-
     for n in 0..input.len() {
         if n == 0 {
             continue;
@@ -17,6 +15,5 @@ fn main() {
             count += 1;
         }
     }
-
     println!("{}", count);
 }
