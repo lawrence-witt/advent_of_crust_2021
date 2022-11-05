@@ -1,8 +1,4 @@
-use common;
-
-fn str_to_i32(value: &str) -> i32 {
-    return value.parse::<i32>().unwrap();
-}
+use common::*;
 
 fn str_arr_to_i32_vec(value: &[String]) -> Vec<i32> {
     return value.iter().map(|v| str_to_i32(v)).collect();
@@ -13,7 +9,7 @@ fn sum_i32_vec(value: &Vec<i32>) -> i32 {
 }
 
 fn main() {
-    let input = common::read_rn_input(1);
+    let input = read_new_line_input(1);
     let mut count = 0;
     for n in 0..input.len() {
         if n < 3 {
