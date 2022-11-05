@@ -2,6 +2,7 @@
 
 members = [
     "common", 
+    "scripts",
     "day-1",
     "day-2",
 ]

@@ -1,0 +1,12 @@
+[package]
+name = "scripts"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+glob = "0.3.0"
+common = { path = "../common" }
+
+[[bin]]
+name = "generate"
+path = "src/generate.rs"
