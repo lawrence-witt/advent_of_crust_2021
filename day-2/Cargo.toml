@@ -7,5 +7,9 @@ edition = "2021"
 name = "part-1"
 path = "src/part-1.rs"
 
+[[bin]]
+name = "part-2"
+path = "src/part-2.rs"
+
 [dependencies]
 common = { path = "../common" }
