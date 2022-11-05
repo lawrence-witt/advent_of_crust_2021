@@ -8,3 +8,7 @@ pub fn read_new_line_input(day: u8) -> Vec<String> {
         .map(|e| String::from(String::from(e).trim()))
         .collect();
 }
+
+pub fn str_to_i32(value: &str) -> i32 {
+    return value.parse::<i32>().unwrap();
+}

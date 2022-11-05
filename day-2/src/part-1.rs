@@ -1,29 +1,22 @@
-use common;
-
-struct Direction {
-    horizontal: i32,
-    depth: i32
-}
-
-impl Direction {
-    fn new() -> Direction {
-        return Direction{horizontal: 0, depth: 0}
-    }
-    fn forward(&mut self, value: i32) {
-        self.horizontal += value
-    }
-    fn up(&mut self, value: i32) {
-        self.depth -= value;
-    }
-    fn down(&mut self, value: i32) {
-        self.depth += value;
-    }
-}
+use common::*;
 
 fn main() {
-    let input = common::read_new_line_input(2);
+    let input = read_new_line_input(2);
 
-    let mut d = Direction::new();
+    let mut horizontal = 0;
+    let mut depth = 0;
 
-    println!("{:?}", input);
+    for i in input.iter() {
+        let cmd: Vec<&str> = i.split_whitespace().collect();
+        let dir = cmd[0];
+        let v = str_to_i32(cmd[1]);
+        match dir {
+            "forward" => horizontal += v,
+            "up" => depth -= v,
+            "down" => depth += v,
+            _ => panic!("invalid direction {}", dir)
+        }
+    }
+
+    println!("{}", horizontal * depth);
 }
