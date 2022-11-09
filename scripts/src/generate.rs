@@ -1,29 +1,44 @@
+use std::fs;
 use common::str_to_i32;
-use glob::glob;
-use std::cmp::max;
-use std::error::Error;
+use regex::Regex;
+use serde_derive::{Deserialize, Serialize};
 
-fn get_next_day() -> Result<i32, Box<dyn Error>> {
+fn get_current_day(members: Vec<String>) -> i32 {
     let mut current = 1;
-    for entry in glob("day-*").expect("failed to read glob pattern") {
-        match entry {
-            Ok(path) => {
-                let segments: Vec<String> = path.display().to_string().split("-").map(String::from).collect();
-                let day = str_to_i32(&segments[1]);
-                current = max(current, day);
+    for member in members {
+        let exp = Regex::new(r"^day-(1?\d|2[1-5])$").unwrap();
+        let test = exp.captures(&member);
+        match test {
+            Some(group) => {
+                let day = group.get(1).unwrap().as_str();
+                current = std::cmp::max(current, str_to_i32(day));
             },
-            Err(e) => return Err(e)?,
+            None => continue
         }
     }
-    if current > 24 {
-        return Err("day limit reached")?;
-    }
-    return Ok(current + 1);
+    return current;
+}
+
+#[derive(Deserialize, Serialize)]
+struct RootConfig {
+    workspace: Members
+}
+
+#[derive(Deserialize, Serialize)]
+struct Members {
+    members: Vec<String>
+}
+
+fn read_root_config() -> RootConfig {
+    let root_config_str = fs::read_to_string("Cargo.toml").expect("should return root Cargo file");
+    return toml::from_str(&root_config_str).unwrap();
 }
 
 fn main() {
-    let next = get_next_day().expect("next day should be available");
-    println!("{next}")
-    // create new folder with /src/part-1.rs and /src/part-2.rs and Cargo.toml
-    // add the new folder to the root Cargo.toml
+    let conf = read_root_config();
+    let current_day = get_current_day(conf.workspace.members);
+    if current_day == 25 {
+        panic!("final entry 25 already exists")
+    }
+    let next_day = current_day + 1;
 }
