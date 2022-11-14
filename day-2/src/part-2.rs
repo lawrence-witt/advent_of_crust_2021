@@ -13,10 +13,10 @@ fn main() {
             "forward" => {
                 horizontal += v;
                 depth += v * aim;
-            },
+            }
             "up" => aim -= v,
             "down" => aim += v,
-            _ => panic!("invalid direction {}", dir)
+            _ => panic!("invalid direction {}", dir),
         }
     }
     println!("{}", horizontal * depth);

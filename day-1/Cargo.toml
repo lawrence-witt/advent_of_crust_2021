@@ -11,5 +11,5 @@ path = "src/part-1.rs"
 name = "part-2"
 path = "src/part-2.rs"
 
-[dependencies]
-common = { path = "../common" }
+[dependencies.common]
+path = "../common"
