@@ -28,7 +28,7 @@ pub fn format_input(input: &Vec<String>) -> (Vec<i32>, Vec<Board>) {
 
 #[derive(Debug)]
 pub struct Board {
-rows: Vec<Vec<Cell>>
+    pub rows: Vec<Vec<Cell>>
 }
 
 impl Board {
@@ -84,6 +84,7 @@ impl Board {
 }
 
 #[derive(Debug)]
+#[derive(Clone)]
 pub struct Cell {
     value: i32,
     marked: bool
