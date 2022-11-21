@@ -80,6 +80,7 @@ impl Line {
         return Line {start, end}
     }
 
+    #[allow(dead_code)]
     pub fn is_diagonal(&self) -> bool {
         return self.start.x != self.end.x && self.start.y != self.end.y;
     }
