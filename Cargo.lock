@@ -48,6 +48,7 @@ name = "day-5"
 version = "0.1.0"
 dependencies = [
  "common",
+ "regex",
 ]
 
 [[package]]

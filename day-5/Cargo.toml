@@ -9,5 +9,9 @@ path = 'src/part-1.rs'
 [[bin]]
 name = 'part-2'
 path = 'src/part-2.rs'
+
+[dependencies]
+regex = "1"
+
 [dependencies.common]
 path = '../common'
