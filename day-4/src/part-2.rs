@@ -7,7 +7,7 @@ fn main() {
     for n in numbers {
         let mut index = 0;
         let mut boards_len = boards.len();
-        while index < boards.len() {
+        while index < boards_len {
             let board = &mut boards[index];
             board.mark_cells(n);
             if board.is_complete() {
