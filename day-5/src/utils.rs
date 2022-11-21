@@ -1,4 +1,8 @@
+use std::{sync::{Arc, Mutex}, collections::HashMap};
+
 extern crate regex;
+
+// Helpers
 
 fn step_to_target(value: i32, target: i32) -> i32 {
     if value < target {
@@ -28,6 +32,26 @@ pub fn format_input(input: Vec<String>) -> Vec<Line> {
     }
     return lines;
 }
+
+pub fn score_point(point: &Point, score_map: &Arc<Mutex<HashMap<String, i32>>>, repeated: &Arc<Mutex<i32>>) {
+    let key = point.to_string();
+    let mut score_map_guard = score_map.lock().unwrap();
+    let mut repeated_guard = repeated.lock().unwrap();
+    let opt = &mut score_map_guard.get(&key);
+    match opt {
+        Some(value) => {
+            if **value == 1 {
+                *repeated_guard += 1;
+                score_map_guard.insert(key, 2);
+            }
+        }
+        None => {
+            score_map_guard.insert(key, 1);
+        } 
+    }
+}
+
+// Structs
 
 #[derive(Debug)]
 pub struct Point {
