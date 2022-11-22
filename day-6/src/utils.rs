@@ -12,7 +12,7 @@ pub fn format_input(input: Vec<String>) -> Vec<Fish> {
 
 #[derive(Debug)]
 pub struct Fish {
-    days: u8
+    pub days: u8
 }
 
 impl Fish {
@@ -20,6 +20,7 @@ impl Fish {
         return Fish{days};
     }
 
+    #[allow(dead_code)]
     pub fn tick(&mut self) -> Option<Fish> {
         if self.days == 0 {
             self.days = 6;
