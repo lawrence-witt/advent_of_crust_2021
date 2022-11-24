@@ -2,11 +2,11 @@ extern crate common;
 mod utils;
 
 fn main() {
-    let input = common::read_input(7, "\n");
+    let input = common::read_input(8, "\n");
     let displays = utils::format_input(input);
-    let mut result = 0;
+    let mut result: u64 = 0;
     for display in displays {
-      result += display.count_unqiue()
+      result += u64::from(display.solve())
     }
     println!("{:#?}", result)
 }
