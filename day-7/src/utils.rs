@@ -2,6 +2,7 @@ use std::{convert::TryInto, ops::Add, iter::FromIterator, collections::HashMap};
 
 // Helpers
 
+#[allow(dead_code)]
 pub fn sort_string(input: String) -> String {
     let mut chars: Vec<char> = input.chars().collect();
     chars.sort_by(|a, b| a.cmp(b));
@@ -19,6 +20,7 @@ pub fn format_input(input: Vec<String>) -> Vec<Display> {
     return displays;
 }
 
+#[allow(dead_code)]
 pub fn exclude_string(target: &String, exclusion: &String) -> (String, String) {
     let mut remaining = String::new();
     let mut excluded = String::new();
@@ -35,6 +37,7 @@ pub fn exclude_string(target: &String, exclusion: &String) -> (String, String) {
     return (remaining, excluded);
 }
 
+#[allow(dead_code)]
 pub fn transform_output(output: &str, mapping: &HashMap<String, String>) -> String {
     let mut result = String::new();
     for char in output.chars() {
@@ -48,6 +51,7 @@ pub fn transform_output(output: &str, mapping: &HashMap<String, String>) -> Stri
 
 #[derive(Debug)]
 pub struct Display {
+    #[allow(dead_code)]
     signals: [String; 10],
     outputs: [String; 4]
 }
@@ -57,6 +61,7 @@ impl Display {
         return Display{signals, outputs}
     }
 
+    #[allow(dead_code)]
     pub fn count_unqiue(&self) -> u16 {
         let mut result = 0;
         for o in self.outputs.iter() {
@@ -68,6 +73,7 @@ impl Display {
         return result;
     }
 
+    #[allow(dead_code)]
     pub fn solve(&self) -> u16 {
         let mut undef_signals: Vec<String> = self.signals.iter().map(String::from).collect();
         let mut def_signals: [String; 10] = Default::default();
