@@ -15,12 +15,12 @@ fn main() {
             match close_token {
                 Some(t) => {
                     if !token.is(t) {
-                        result += token.score();
+                        result += token.score_illegal();
                         continue 'lines
                     }
                 },
                 None => {
-                    result += token.score();
+                    result += token.score_illegal();
                     continue 'lines;
                 }
             }

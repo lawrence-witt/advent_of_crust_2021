@@ -1,7 +1,4 @@
 
-
-// Structs
-
 #[derive(Debug)]
 pub struct Token {
     value: char
@@ -33,12 +30,24 @@ impl Token {
         }
     }
 
-    pub fn score(&self) -> u32 {
+    #[allow(dead_code)]
+    pub fn score_illegal(&self) -> u32 {
         match self.value {
             ')' => return 3,
             ']' => return 57,
             '}' => return 1197,
             '>' => return 25137,
+            _ => return 0
+        }
+    }
+
+    #[allow(dead_code)]
+    pub fn score_complete(&self) -> u8 {
+        match self.value {
+            ')' => return 1,
+            ']' => return 2,
+            '}' => return 3,
+            '>' => return 4,
             _ => return 0
         }
     }
