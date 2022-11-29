@@ -17,3 +17,12 @@ pub fn format_input(input: Vec<String>) -> HashMap<String, HashMap<String, bool>
     }
     return map;
 }
+
+pub fn some<T: std::cmp::PartialEq>(vector: &Vec<T>, test: T) -> bool {
+    for v in vector {
+        if *v == test {
+            return true
+        }
+    }
+    return false
+}

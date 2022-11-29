@@ -1,15 +1,6 @@
 use std::collections::HashMap;
 mod utils;
 
-fn some<T: std::cmp::PartialEq>(vector: &Vec<T>, test: T) -> bool {
-    for v in vector {
-        if *v == test {
-            return true
-        }
-    }
-    return false
-}
-
 fn traverse(key: String, links: &HashMap<String, HashMap<String, bool>>, path: &mut Vec<String>, paths: &mut Vec<String>) {
     let options = links.get(&key).unwrap();
     for opt in options.keys() {
@@ -17,7 +8,7 @@ fn traverse(key: String, links: &HashMap<String, HashMap<String, bool>>, path: &
         if opt_as_str == "start" {
             continue;
         }
-        if opt_as_str == opt_as_str.to_lowercase() && some(path, opt_as_str.to_string()) {
+        if opt_as_str == opt_as_str.to_lowercase() && utils::some(path, opt_as_str.to_string()) {
             continue;
         }
         let mut next_path = path.clone();
