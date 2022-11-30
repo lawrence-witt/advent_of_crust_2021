@@ -1,0 +1,17 @@
+[package]
+name = 'day-13'
+version = '0.1.0'
+
+[[bin]]
+name = 'part-1'
+path = 'src/part-1.rs'
+
+[[bin]]
+name = 'part-2'
+path = 'src/part-2.rs'
+
+[dependencies]
+regex = "1"
+
+[dependencies.common]
+path = '../common'
