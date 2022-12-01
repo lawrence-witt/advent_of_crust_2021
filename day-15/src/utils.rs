@@ -64,7 +64,7 @@ fn get_node_at_point(x: usize, y: usize, input: &Vec<Vec<Node>>) -> &Node {
 }
 
 pub fn solve(input: &mut Vec<Vec<Node>>) {
-    let first = input.get_mut(0).unwrap().get_mut(0).unwrap();
+    let first = get_mut_node_at_point(0, 0, input);
     first.weight = 0;
     first.value = 0;
     first.is_visited = true;
